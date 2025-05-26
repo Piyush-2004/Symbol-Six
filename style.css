@@ -1,0 +1,144 @@
+body {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+.heading {
+  padding: 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: linear-gradient();
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dice-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  justify-items: center;
+}
+
+.dice-container {
+  perspective: 1000px;
+}
+
+.dice {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-out;
+}
+
+.dice-image.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.face1 { transform: translateZ(50px); }
+.face2 { transform: rotateX(90deg) translateZ(50px); }
+.face3 { transform: rotateX(-90deg) translateZ(50px); }
+.face4 { transform: rotateY(90deg) translateZ(50px); }
+.face5 { transform: rotateY(-90deg) translateZ(50px); }
+.face6 { transform: rotateY(180deg) translateZ(50px); }
+
+
+.dice.rolling {
+  animation: roll 1s linear;
+}
+
+@keyframes roll {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(720deg) rotateY(720deg); }
+}
+
+.results {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 600px) {
+  .dice-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .dice-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dice {
+  transition: transform 1s ease-out, transform 0.3s ease-in-out;
+}
+.dice.rolling {
+  animation: roll 1s linear, bounce 0.3s ease-in-out 1s;
+}
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
