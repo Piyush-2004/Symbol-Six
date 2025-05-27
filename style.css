@@ -142,3 +142,41 @@ button:active {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
+@media (max-width: 600px) {
+  .dice-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 15px;
+    padding: 10px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+  .dice {
+    width: 80px;
+    height: 80px;
+  }
+  .dice-image.face {
+    width: 80px;
+    height: 80px;
+  }
+  .face1 { transform: translateZ(40px); }
+  .face2 { transform: rotateX(90deg) translateZ(40px); }
+  .face3 { transform: rotateX(-90deg) translateZ(40px); }
+  .face4 { transform: rotateY(90deg) translateZ(40px); }
+  .face5 { transform: rotateY(-90deg) translateZ(40px); }
+  .face6 { transform: rotateY(180deg) translateZ(40px); }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 15px; /* Add gap between buttons */
+}
